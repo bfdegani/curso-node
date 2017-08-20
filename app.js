@@ -1,9 +1,5 @@
 var app = require('./config/express')();
-
-app.get('/produtos', (req, res) => {
-  console.log("listando produtos");
-  res.render("produtos/lista");
-});
+var rotasProdutos = require('./app/routes/produtos')(app);
 
 hostname = "127.0.0.1";
 port = "3000";

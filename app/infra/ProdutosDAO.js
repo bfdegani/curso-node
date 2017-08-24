@@ -8,6 +8,11 @@ ProdutosBanco.prototype.lista = function(callback){
   this._connection.query('select * from livros', callback);
 }
 
+ProdutosBanco.prototype.salva = function(produto, callback){
+  console.log(produto);
+  this._connection.query('insert into casadocodigo.livros set ?', produto, callback);
+}
+
 module.exports = function(){
   return ProdutosBanco;
 }

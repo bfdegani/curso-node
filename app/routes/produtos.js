@@ -7,14 +7,22 @@ module.exports = function(app) {
     var connection = app.infra.connectionFactory();
     var produtosDAO = new app.infra.ProdutosDAO(connection); //new cria um novo contexto para esse objeto, do contrario, 'this' referencia todo o contexto do express
 
-    produtosDAO.lista(function(erros, resultados){
-      res.render("produtos/lista",{lista:resultados});
+    produtosDAO.lista((erros, resultados) => { // '() => ' representa uma forma alternativa de passar uma função como argumento
+      res.format({
+        html: function(){
+          res.render("produtos/lista",{lista:resultados});
+        },
+        json: function(){
+          res.json(resultados);
+        }
+      });
+
     });
     connection.end();
   });
 
   //formulario para inclusao de novos produtos
-  app.get('/produtos/form', function(req,res){
+  app.get('/produtos/form', (req,res) => {
     res.render("produtos/form");
   })
 

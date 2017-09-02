@@ -35,6 +35,7 @@ module.exports = function(app) {
     console.log(produto);
 
     produtosDAO.salva(produto, function(erros, resultados){
+      console.log(erros);
       res.redirect('/produtos');
     });
     connection.end();

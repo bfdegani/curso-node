@@ -8,7 +8,9 @@ module.exports = function() {
   app.set('view engine', 'ejs');
   app.set('views', './app/views');
 
-  app.use(bodyParser.urlencoded({extended: true})); //deve estar antes do load (abaixo) para garantir que o bodyparser seja executado. bodyparser atua como um middleware
+  //deve estar antes do load (abaixo) para garantir que o bodyparser seja executado. bodyparser atua como um middleware
+  app.use(bodyParser.urlencoded({extended: true})); //bodyParser para conteudo html
+  app.use(bodyParser.json()); //bodyParser para conteudo json
 
   load('routes', {cwd:'app'}) //{cwd:'app'} indica que a busca pelos modulos deve ser na pasta app
     .then('infra', {cwd:'app'}) // carregamento deve respeitar dependencias

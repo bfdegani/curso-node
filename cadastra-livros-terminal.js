@@ -16,14 +16,14 @@ var configuracoes = {
 var client = http.request(configuracoes, function(res){
   console.log(res.statusCode);
   res.on('data', function(body){
-    console.log('Corpo:'+body);
+    console.log('cadastra-livros-terminal.js: '+body);
   });
 });
 
 var produto = {
-    titulo: 'mais sobre node.js',
+    //titulo: 'Mais um livro de teste',
     descricao: 'node, javascript e http',
-    preco: 100
+    preco: 99.99
 };
 
 client.end(JSON.stringify(produto));

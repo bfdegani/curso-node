@@ -21,7 +21,7 @@ var client = http.request(configuracoes, function(res){
 });
 
 var produto = {
-    //titulo: 'Mais um livro de teste',
+    titulo: 'Mais um livro de teste',
     descricao: 'node, javascript e http',
     preco: 99.99
 };

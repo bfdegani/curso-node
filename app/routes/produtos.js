@@ -1,13 +1,16 @@
 module.exports = function(app) {
 
   //consulta lista de produtos
-  app.get('/produtos', (req, res) => {
-    console.log("listando produtos");
+  app.get('/produtos', (req, res, next) => { //next representa a proxima funcao do fluxo de execução do node no express
+    //console.log("listando produtos");
 
     var connection = app.infra.connectionFactory();
     var produtosDAO = new app.infra.ProdutosDAO(connection); //new cria um novo contexto para esse objeto, do contrario, 'this' referencia todo o contexto do express
 
     produtosDAO.lista((erros, resultados) => { // '() => ' representa uma forma alternativa de passar uma função como argumento
+      if(erros){
+        return next(erros);
+      }
       res.format({
         html: function(){
           res.render("produtos/lista",{lista:resultados}); //binding dos resultados com o elemento da página
@@ -28,7 +31,7 @@ module.exports = function(app) {
   //gravacao de novo produto
   app.post('/produtos',function(req,res){
     var produto = req.body;
-    console.log(produto);
+    //console.log(produto);
 
     //validações de campos usando express-validator
     req.assert('titulo', 'Titulo é obrigatório').notEmpty();
@@ -37,7 +40,7 @@ module.exports = function(app) {
 
     var erros = req.validationErrors();
     if(erros){
-      console.log(erros);
+      //console.log(erros);
       res.format({
           html: function(){
             res.status(400).render('produtos/form',{errosValidacao: erros,produto:produto}); //binding do objeto de erros com o elemento da página
@@ -52,7 +55,7 @@ module.exports = function(app) {
     var connection = app.infra.connectionFactory();
     var produtosDAO = new app.infra.ProdutosDAO(connection);
     produtosDAO.salva(produto, function(erros, resultados){
-      console.log(erros);
+      //console.log(erros);
       res.redirect('/produtos');
     });
     connection.end();

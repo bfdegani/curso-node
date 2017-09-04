@@ -4,7 +4,7 @@ var http = require('http');
 
 //definição da estrutura do test usando mocha
 describe('ProdutosController', function(){
-  it('#listagem json', function(done){ //done eh uma funcao (poderia ter outro nome) definida para garantir que o mocha aguarda toda a execução assíncrona antes de finalizar sua execução
+  it('#listagem json (mocha)', function(done){ //done eh uma funcao (poderia ter outro nome) definida para garantir que o mocha aguarda toda a execução assíncrona antes de finalizar sua execução
     var configuracoes = {
       hostname: 'localhost',
       port: '3000',

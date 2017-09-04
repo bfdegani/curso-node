@@ -10,7 +10,7 @@ ProdutosBanco.prototype.lista = function(callback){
 
 ProdutosBanco.prototype.salva = function(produto, callback){
   console.log(produto);
-  this._connection.query('insert into casadocodigo.livros set ?', produto, callback);
+  this._connection.query('insert into livros set ?', produto, callback);
 }
 
 module.exports = function(){

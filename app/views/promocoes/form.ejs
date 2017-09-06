@@ -1,0 +1,16 @@
+<html>
+  <body>
+    <form action="/promocoes" method="post">
+      <div>
+        <input type="text" name="mensagem"/>
+      </div>
+      <div>
+        <select name="livro[id]"><%/*livro[id] faz com que o bodyparser atribua a seleção ao atributo "id" do objrto "livro"*/%>
+          <%for(var i=0;i<lista.length;i++){%>
+            <option value="<%=lista[i].id%>"><%=lista[i].id%>. <%=lista[i].titulo%></option>
+          <%}%>
+        </select>
+      <input type="submit" value="Cadastrar promoção"/>
+    </form>
+  </body>
+</html>

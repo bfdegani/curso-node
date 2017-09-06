@@ -248,5 +248,14 @@
         </div>
     </div>
 </footer>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    // utilização da biblioteca socket.io para notificações no front via websocket
+    var socket = io();
+      socket.on('novaPromocao', function(data){
+        console.log(data);
+        alert(data.mensagem + ": " + data.livro.id);
+    });
+</script>
 </body>
 </html>

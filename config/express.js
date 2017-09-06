@@ -6,6 +6,7 @@ var expressValidator = require('express-validator');
 module.exports = function() {
   var app = express();
 
+  app.use(express.static('./app/public')); //mapeia caminho dos conteudos estaticos
   app.set('view engine', 'ejs');
   app.set('views', './app/views');
 

@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "site da casa do codigo",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production CLEARDB_DATABASE_URL=mysql://ba0b8a9ddbcb56:e93618dd@us-cdbr-iron-east-05.cleardb.net/heroku_a4e42e6c2ce8850?reconnect=true nodemon app"
   },
   "author": "bruno degani",
   "license": "ISC",
@@ -13,11 +14,12 @@
     "ejs": "^2.5.7",
     "express": "^4.15.4",
     "express-load": "^1.1.16",
-    "mysql": "^2.14.1",
-    "socket.io": "^2.0.3"
+    "mysql": "^2.14.1"
   },
   "devDependencies": {
-    "mocha": "^3.5.0",
-    "supertest": "^3.0.0"
+    "mocha": "^3.5.0"
+  },
+  "engines": {
+    "node" : "6.11.2"
   }
 }

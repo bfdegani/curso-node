@@ -4,9 +4,8 @@ var io = require('socket.io')(http); // socket.io recebe o objeto http.Server cr
 
 app.set('io', io); //insere o objeto io criado dentro do objeto app
 
-hostname = "127.0.0.1";
-port = "3000";
+var port = process.env.PORT || "3000";
 
 http.listen(port, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+  console.log("Server running at port " + port);
 });

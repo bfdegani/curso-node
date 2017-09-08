@@ -1,8 +1,8 @@
 var mysql = require('mysql');
 
 function createDBConnection(){
-    if(process.env.NODE_ENV === 'production') {
-      console.log('running in production database');
+    if(!process.env.NODE_ENV) {
+      console.log('running in development database');
       return mysql.createConnection({
         host : 'localhost',
         user : 'bfdegani',
@@ -20,6 +20,13 @@ function createDBConnection(){
       database : 'casadocodigo_test'
     });
   }
+
+  if(process.env.NODE_ENV === 'production') {
+    console.log('running in remote production database');
+    return mysql.createConnection(process.env.CLEARDB_DATABASE_URL);
+}
+
+
 }
 
 //wrapper

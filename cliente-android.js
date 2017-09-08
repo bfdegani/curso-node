@@ -13,4 +13,4 @@ http.get(configuracoes, function(res){
   res.on('data', function(body){
     console.log('cliente-android.js: ' + body);
   });
-});
+}); 

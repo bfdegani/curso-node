@@ -1,4 +1,4 @@
-create table casadocodigo.livros
+create table livros
 (
   id int(11) NOT NULL AUTO_INCREMENT,
   titulo varchar(255) NULL,
@@ -8,14 +8,14 @@ create table casadocodigo.livros
 );
 
 
-insert into casadocodigo.livros(titulo, descricao, preco)
-values ("Começando com nodejs", "Livro sobre nodejs", 40);
+insert into livros(titulo, descricao, preco)
+values ("Começando com nodejs", "Livro sobre nodejs", 50);
 
-insert into casadocodigo.livros(titulo, descricao, preco)
+insert into livros(titulo, descricao, preco)
 values ("Começando com javascript", "Livro sobre javascript", 40);
 
-insert into casadocodigo.livros(titulo, descricao, preco)
+insert into livros(titulo, descricao, preco)
 values ("Começando com express", "Livro sobre express", 40);
 
-insert into casadocodigo.livros(titulo, descricao, preco)
+insert into livros(titulo, descricao, preco)
 values ("Indo além com javascript", "Livro avançado sobre javascript", 39.90);

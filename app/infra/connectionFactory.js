@@ -1,7 +1,8 @@
 var mysql = require('mysql');
 
 function createDBConnection(){
-    if(!process.env.NODE_ENV) {
+    if(process.env.NODE_ENV === 'production') {
+      console.log('running in production database');
       return mysql.createConnection({
         host : 'localhost',
         user : 'bfdegani',
@@ -11,6 +12,7 @@ function createDBConnection(){
   }
 
   if(process.env.NODE_ENV === 'test') { // '===' difere de '==' por nao fazer conversao de tipo e só retorna true se os objetos são do mesmo tipo e iguais (nesse caso, não faz diferença)
+    console.log('running in test database');
     return mysql.createConnection({
       host : 'localhost',
       user : 'bfdegani',

@@ -19,5 +19,20 @@ module.exports = function() {
     .then('infra', {cwd:'app'}) // carregamento deve respeitar dependencias
     .into(app);
 
+    //criado um midleware para tratar casos em que o express não encontra uma rota associada
+    //importante estar após o tratamento de rotas do bloco acima, do contrário, será executado mesmo
+    //quando existir um rota
+    app.use(function(req,res,next){
+      res.status(404).render('erros/404');
+      next(); //libera a continuação do fluxo de execução do express
+    });
+
+    app.use(function(error,req,res,next){
+      if(process.env.NODE_ENV == 'production'){
+        res.status(500).render('erros/500',{error:error});
+        return;
+      }
+        next(error);
+    });
   return app;
 }

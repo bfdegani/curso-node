@@ -8,7 +8,7 @@ module.exports = function(app) {
       //console.log(resultados);
       res.render('promocoes/form',{lista:resultados}); //binding dos resultados com o elemento da página
     });
-    connection.end();
+    //connection.end(); // usando pool
   });
 
   app.post('/promocoes',function(req,res){

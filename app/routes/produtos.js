@@ -20,7 +20,7 @@ module.exports = function(app) {
         }
       });
     });
-    connection.end();
+    //connection.release();
   });
 
   //formulario para inclusao de novos produtos
@@ -58,6 +58,6 @@ module.exports = function(app) {
       //console.log(erros);
       res.redirect('/produtos');
     });
-    connection.end();
+    //connection.end();
   });
 }
